@@ -1,4 +1,3 @@
 import pygame
 
-print("hello world!")
-print('Woooow')
+WIN = pygame.display.set_mode((WIDTH, HEIGHT))
