@@ -28,12 +28,12 @@ class Board:
     #End creation of squares
 
     #Start evaluate method 
-    def evaluate(self):
+    def evaluate(self): #sohaila
         pass
     #End evaluate method
 
     #Start get_all_pieces method
-    def get_all_pieces(self):
+    def get_all_pieces(self): #Tarek
         pass
     #End get_all_pieces method
 

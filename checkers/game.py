@@ -82,12 +82,12 @@ class Game:
     #End change_turn method
 
     #Start get_board method
-    def get_board(self):
+    def get_board(self): #Ahmed samir
         pass
     #End get_board method 
 
     #Start ai_move method 
-    def ai_move(self, board):
+    def ai_move(self, board): #adham
         pass
     #End ai_move method 
 
