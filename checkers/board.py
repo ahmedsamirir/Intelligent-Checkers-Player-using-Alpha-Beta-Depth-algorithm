@@ -33,8 +33,13 @@ class Board:
     #End evaluate method
 
     #Start get_all_pieces method
-    def get_all_pieces(self):
-        pass
+    def get_all_pieces(self, color):
+        pieces = []
+        for row in self.board:
+            for piece in row:
+                if piece != 0 and piece.color == color:
+                    pieces.append(piece)
+        return pieces
     #End get_all_pieces method
 
     #Start creation of move method that makes the moving of the piece to the position that we select
