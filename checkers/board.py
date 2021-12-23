@@ -29,7 +29,10 @@ class Board:
 
     #Start evaluate method 
     def evaluate(self):
-        pass
+        # Function (1)
+        return self.blue_left - self.white_left
+        # Function (2)
+        # return self.blue_left - self.white_left + (self.blue_kings * 0.5 - self.white_kings * 0.5)
     #End evaluate method
 
     #Start get_all_pieces method

@@ -1,5 +1,8 @@
-import pygame
+from copy import deepcopy
 
+import pygame
+WHITE = (255,255,255)
+BLUE = (0, 0, 255)
 
 #start alpha beta depth first algo method
 def alpha_beta_algo(board, depth, alpha, beta, max_player, game):
@@ -15,7 +18,7 @@ def alpha_beta_algo(board, depth, alpha, beta, max_player, game):
         best_move = None
         for move in get_all_moves(board, BLUE, game):
             #recursive call to go to the last depth in the decision tree
-            evaluation = minimax_to_alphabeta(move, depth-1, alpha, beta, False, game)[0]
+            evaluation = alpha_beta_algo(move, depth-1, alpha, beta, False, game)[0]
             #To check if the new state evaluation is better than maxEval that we have now
             maxEval = max(maxEval, evaluation)
             alpha = max(alpha, evaluation)
@@ -30,7 +33,7 @@ def alpha_beta_algo(board, depth, alpha, beta, max_player, game):
         best_move = None
         for move in get_all_moves(board, WHITE, game):
             #recursive call to go to the last depth in the decision tree
-            evaluation = minimax_to_alphabeta(move, depth-1, alpha, beta, True, game)[0]
+            evaluation = alpha_beta_algo(move, depth-1, alpha, beta, True, game)[0]
             #To check if the new state evaluation is better than minEval that we have now
             minEval = min(minEval, evaluation)
             beta = min(beta, evaluation)
@@ -42,8 +45,13 @@ def alpha_beta_algo(board, depth, alpha, beta, max_player, game):
 #End alpha beta depth first algo method
 
 #Start simulate method
-def simulate_move():
-    pass
+def simulate_move(piece, move, board, game, skip):
+    board.move(piece, move[0], move[1])
+    if skip:
+        board.remove_piece(skip)
+    return board
+
+
 #End simulate method
 
 #Start get_all_moves method
