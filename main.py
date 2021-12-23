@@ -1,6 +1,7 @@
 import pygame
 from checkers.constants import *
 from checkers.game import Game
+#from Ai_algorithm import alpha_beta_algo
 
 #To render the game in a fixed frames number per second
 FPS = 60
@@ -25,13 +26,21 @@ def main():
     #To make the game run in fixed speed
     clock = pygame.time.Clock()
 
+    #To create a board and start the game
     game = Game(WIN)
     
+    #Event Loop
     while run:
+        #To run the game in a fixed speed -> (f/s)
         clock.tick(FPS)
+
+        #Start To make the ai play
+        pass
+        #End To make the ai play
 
         if game.winner() != None:
             print(game.winner)
+            run = False #To quit the game if someone is win
         
         #Start check if any event happen in the current time
         for event in pygame.event.get(): 
@@ -39,7 +48,7 @@ def main():
                 run = False
             
             if event.type == pygame.MOUSEBUTTONDOWN:
-                pos = pygame.mouse.get_pos()
+                pos = pygame.mouse.get_pos() #return tuple
                 row, col = get_row_col_from_mouse(pos)
                 game.select(row, col)
         #End check if any event happen in the current time
@@ -48,5 +57,5 @@ def main():
     #Quit from the game
     pygame.quit() 
 
-#To call the main function
+#To call the main function and run the code inside it
 main()

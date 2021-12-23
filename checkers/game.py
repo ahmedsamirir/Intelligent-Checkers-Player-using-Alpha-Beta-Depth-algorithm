@@ -7,13 +7,13 @@ class Game:
         self._init()
         self.win = win
 
-    #Start _init private method that initialize all properties foe the game to start
+    #Start _init private method that initialize all properties for the game to start
     def _init(self):
         self.selected = None
         self.board = Board() #Board object creation
         self.turn = WHITE
         self.valid_moves = {}
-    #End _init private method that initialize all properties foe the game to start
+    #End _init private method that initialize all properties for the game to start
 
     #Start winner method
     def winner(self):
@@ -50,7 +50,7 @@ class Game:
         return False #if the selected piece is invalid
     #End select method to try move the selected piece
 
-    #Start move method to move the selected piece to the pos we choose
+    #Start move method to handle the moving of the selected piece to the pos we choose
     def _move(self, row, col):
         piece = self.board.get_piece(row, col)
         #check if there is a selected piece and if the pos that we need to move to is = 0
@@ -63,7 +63,7 @@ class Game:
         else:
             return False #if the selection method is invalid
         return True #if the selection method is valid
-    #End move method to move the selected piece to the pos we choose
+    #End move method to handle the moving of the selected piece to the pos we choos e
 
     #Start draw_valid_moves method
     def draw_valid_moves(self, moves):
@@ -80,5 +80,15 @@ class Game:
         else:
             self.turn = WHITE
     #End change_turn method
+
+    #Start get_board method
+    def get_board(self):
+        pass
+    #End get_board method 
+
+    #Start ai_move method 
+    def ai_move(self, board):
+        pass
+    #End ai_move method 
 
 

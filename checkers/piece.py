@@ -26,13 +26,15 @@ class Piece:
     #To draw the pieces (circles)
     def draw(self, win):
         radius = SQUARE_SIZE//2 - self.PADDING
+        #Drawing the outline of the circle
         pygame.draw.circle(win, GREY, (self.x, self.y), radius + self.OUTLINE)
+        #Drawing the main circle
         pygame.draw.circle(win, self.color, (self.x, self.y), radius)
         if self.king:
-            #(blit) is means but anything like image on the screen 
+            #(blit) is means put anything like image on the screen 
             win.blit(CROWN, (self.x - CROWN.get_width()//2, self.y - CROWN.get_height()//2))
 
-    #To start move
+    #To Update the piece position after moveing it
     def move(self, row, col):
         self.row = row
         self.col = col
