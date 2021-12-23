@@ -1,7 +1,7 @@
 import pygame
 
 
-#Start minimax_to_alphabeta algorithm
+#start alpha beta depth first algo method
 def alpha_beta_algo(board, depth, alpha, beta, max_player, game):
     #check if we reach the end depth of the decision tree
     if depth == 0 or board.winner() != None:
@@ -25,11 +25,21 @@ def alpha_beta_algo(board, depth, alpha, beta, max_player, game):
                 best_move = move
         return maxEval, best_move
     else:
-        pass
-
-
-    
-#End minimax_to_alphabeta algorithm
+        #if the ai don't checked anything in a specific position then it will be -inf
+        minEval = float('inf') 
+        best_move = None
+        for move in get_all_moves(board, WHITE, game):
+            #recursive call to go to the last depth in the decision tree
+            evaluation = minimax_to_alphabeta(move, depth-1, alpha, beta, True, game)[0]
+            #To check if the new state evaluation is better than minEval that we have now
+            minEval = min(minEval, evaluation)
+            beta = min(beta, evaluation)
+            if beta <= alpha:
+                break
+            if minEval == evaluation:
+                best_move = move
+        return minEval, best_move
+#End alpha beta depth first algo method
 
 #Start simulate method
 def simulate_move():
