@@ -1,7 +1,7 @@
 import pygame
 from checkers.constants import *
 from checkers.game import Game
-#from Ai_algorithm import alpha_beta_algo
+from Ai_algorithm.alpha_beta import alpha_beta_algo
 
 #To render the game in a fixed frames number per second
 FPS = 60
@@ -35,7 +35,11 @@ def main():
         clock.tick(FPS)
 
         #Start To make the ai play
-        pass
+        if game.turn == BLUE:
+            #The higher the number of depth, the higher the complexity of the ai
+            #value, new_board = minimax(game.get_board(), 4, BLUE, game)
+            value, new_board = alpha_beta_algo(game.get_board(), 4, float('-inf'), float('inf'), BLUE, game)
+            game.ai_move(new_board)
         #End To make the ai play
 
         if game.winner() != None:

@@ -18,7 +18,6 @@ class Game:
     #Start winner method
     def winner(self):
         return self.board.winner()
-
     #End winner method
 
     #Start update method that draw the board and update it
@@ -58,7 +57,7 @@ class Game:
             self.board.move(self.selected, row, col)
             skipped = self.valid_moves[(row, col)]
             if skipped:
-                self.board.remove(skipped)
+                self.board.remove_piece(skipped)
             self.change_turn()
         else:
             return False #if the selection method is invalid
@@ -82,13 +81,14 @@ class Game:
     #End change_turn method
 
     #Start get_board method
-    def get_board(self): #Ahmed samir
-        pass
+    def get_board(self):
+        return self.board
     #End get_board method 
 
     #Start ai_move method 
-    def ai_move(self, board): #adham
-        pass
+    def ai_move(self, board):
+        self.board = board
+        self.change_turn()
     #End ai_move method 
 
 

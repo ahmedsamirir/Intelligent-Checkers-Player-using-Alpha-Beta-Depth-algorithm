@@ -2,16 +2,10 @@ import pygame
 from .constants import *
 from .piece import Piece
 
-####################
-## Methods need edit ##
-# 
-# 
-####################
 
 class Board:
     def __init__(self):
-        self.board = [] #[[]
-                        # [1, 0, 1]]
+        self.board = [] 
         #The number of pieces still on the board
         self.blue_left = self.white_left = 12
         self.blue_kings = self.white_kings = 0
@@ -27,14 +21,22 @@ class Board:
                 pygame.draw.rect(win, BLUE, (row*SQUARE_SIZE, col*SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE)) #StartX, StartY, EndX, EndY 
     #End creation of squares
 
-    #Start evaluate method 
-    def evaluate(self): #sohaila
-        pass
-    #End evaluate method
+    #Start evaluate method that gives the information to Ai to help make decisions (Huristic Function)
+    def evaluate(self):
+        #Function (1)
+        #return self.blue_left - self.white_left
+        #Function (2)
+        return self.blue_left - self.white_left + (self.blue_kings * 0.5 - self.white_kings * 0.5)
+    #End evaluate method that gives the information to Ai to help make decisions (Huristic Function)
 
     #Start get_all_pieces method
-    def get_all_pieces(self): #Tarek
-        pass
+    def get_all_pieces(self, color):
+        pieces = []
+        for row in self.board:
+            for piece in row:
+                if piece != 0 and piece.color == color:
+                    pieces.append(piece)
+        return pieces
     #End get_all_pieces method
 
     #Start creation of move method that makes the moving of the piece to the position that we select
@@ -92,7 +94,7 @@ class Board:
     #End drawing the board (pieces and squares)
 
     #Start remove method to remove the piece that crashed
-    def remove(self, pieces):
+    def remove_piece(self, pieces):
         for piece in pieces:
             self.board[piece.row][piece.col] = 0
             if piece !=0: #check if the piece is already deleted or not
