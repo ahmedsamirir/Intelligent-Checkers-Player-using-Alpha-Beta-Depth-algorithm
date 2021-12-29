@@ -11,7 +11,6 @@ WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 #Name of the game
 pygame.display.set_caption('Checkers')
 
-
 #Start get_row_col_from_mouse method to get the position of the piece that mouse clicked
 def get_row_col_from_mouse(pos):
     x, y = pos
